@@ -1,4 +1,4 @@
-extends Node2D
+extends TileMap
 
 const WIDTH = 150
 const HEIGHT = 150
@@ -29,12 +29,18 @@ func _ready():
 func _generate_world():
 	for x in WIDTH:
 		for y in HEIGHT:
-			$TileMap.set_cellv(Vector2(x - WIDTH / 2.0, y - HEIGHT / 2.0), _get_tile_index(open_simplex_noise.get_noise_2d(float(x), float(y))))
+			set_cellv(Vector2(x - WIDTH / 2.0, y - HEIGHT / 2.0), _get_tile_index(open_simplex_noise.get_noise_2d(float(x), float(y))))
 
 func _get_tile_index(noise_sample):
+	var rand = randi() % 10
+	
 	if noise_sample < -0.1:
 		return TILES.water
 	if noise_sample < 0.0:
 		return TILES.sand
+	if noise_sample > 0.3:
+		return TILES.stone
 	else:
+		if rand == 1:
+			return TILES.tree
 		return TILES.grass
