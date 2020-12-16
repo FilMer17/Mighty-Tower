@@ -19,7 +19,7 @@ void fragment(){
 shader = SubResource( 1 )
 shader_param/current_color = Color( 0.0588235, 0.196078, 0.0196078, 0.588235 )
 
-[node name="TileMap" type="TileMap"]
+[node name="Map" type="TileMap"]
 position = Vector2( 1, 0 )
 mode = 1
 tile_set = ExtResource( 2 )
