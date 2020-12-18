@@ -21,6 +21,7 @@ func _physics_process(_delta):
 	if is_enable_build:
 		mouse_pos = get_global_mouse_position()
 		tile = parent.world_to_map(mouse_pos)
+		print(tile)
 		position = map_to_world(tile)
 		
 		if parent.get_cellv(tile) == 0:
@@ -31,11 +32,17 @@ func _physics_process(_delta):
 		$Sprite.material.set_shader_param('current_color', current_color)
 
 func _input(event):
-	if event.is_action_pressed("ui_up"):
+	if event.is_action_pressed("map_build"):
 		if is_enable_build:
 			is_enable_build = false
 			$Sprite.visible = false
 		else: 
 			is_enable_build = true
 			$Sprite.visible = true
+#	if is_enable_build:
+#		if event is InputEventMouseButton:
+#			if event.button_index == BUTTON_LEFT:
+#				if event.pressed:
+#					MapStats.money += 1
+#					print(MapStats.money)
 

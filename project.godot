@@ -18,12 +18,24 @@ _global_script_class_icons={
 config/name="Tirith"
 config/icon="res://icon.png"
 
+[autoload]
+
+MapStats="*res://scripts/autoloads/MapStats.gd"
+
 [display]
 
 window/size/width=1280
 window/size/height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[input]
+
+map_build={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":66,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 

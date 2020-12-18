@@ -36,5 +36,6 @@ wrong = Color( 0.588235, 0.0784314, 0.0784314, 0.588235 )
 right = Color( 0.0588235, 0.196078, 0.0196078, 0.588235 )
 
 [node name="Sprite" type="Sprite" parent="Builder"]
+visible = false
 material = SubResource( 2 )
 texture = ExtResource( 4 )
