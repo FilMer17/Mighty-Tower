@@ -7,6 +7,8 @@ onready var parent = self.get_parent()
 #onready var choose_building = preload
 
 # add buildings preloads here
+onready var Sawmill = preload("res://scenes/buildings/Sawmill.tscn")
+var sawmill
 
 var current_color = right
 var tile
@@ -39,10 +41,12 @@ func _input(event):
 		else: 
 			is_enable_build = true
 			$Sprite.visible = true
-#	if is_enable_build:
-#		if event is InputEventMouseButton:
-#			if event.button_index == BUTTON_LEFT:
-#				if event.pressed:
-#					MapStats.money += 1
-#					print(MapStats.money)
-
+	if is_enable_build:
+		if event is InputEventMouseButton:
+			if event.button_index == BUTTON_LEFT:
+				if event.pressed:
+					sawmill = Sawmill.instance()
+					sawmill.position = map_to_world(tile)
+					get_parent().get_node("Buildings").add_child(sawmill)
+					is_enable_build = false
+					$Sprite.visible = false

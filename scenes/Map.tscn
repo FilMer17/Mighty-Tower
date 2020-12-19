@@ -27,6 +27,12 @@ cell_size = Vector2( 64, 32 )
 format = 1
 script = ExtResource( 1 )
 
+[node name="Buildings" type="TileMap" parent="."]
+mode = 1
+cell_size = Vector2( 64, 32 )
+cell_y_sort = true
+format = 1
+
 [node name="Builder" type="TileMap" parent="."]
 mode = 1
 cell_size = Vector2( 64, 32 )
