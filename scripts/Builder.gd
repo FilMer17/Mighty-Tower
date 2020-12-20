@@ -23,13 +23,14 @@ func _physics_process(_delta):
 	if is_enable_build:
 		mouse_pos = get_global_mouse_position()
 		tile = parent.world_to_map(mouse_pos)
-		print(tile)
 		position = map_to_world(tile)
 		
-		if parent.get_cellv(tile) == 0:
+		if parent.get_cellv(tile) == 0 or parent.get_cellv(tile) == 3:
 			current_color = right
+			is_right = true
 		else:
 			current_color = wrong
+			is_right = false
 		
 		$Sprite.material.set_shader_param('current_color', current_color)
 
@@ -42,11 +43,16 @@ func _input(event):
 			is_enable_build = true
 			$Sprite.visible = true
 	if is_enable_build:
-		if event is InputEventMouseButton:
-			if event.button_index == BUTTON_LEFT:
-				if event.pressed:
-					sawmill = Sawmill.instance()
-					sawmill.position = map_to_world(tile)
-					get_parent().get_node("Buildings").add_child(sawmill)
-					is_enable_build = false
-					$Sprite.visible = false
+		if is_right:
+			if event is InputEventMouseButton:
+				if event.button_index == BUTTON_LEFT:
+					if event.pressed:
+						sawmill = Sawmill.instance()
+						if sawmill.cost <= MapStats.money:
+							MapStats.money -= sawmill.cost
+							sawmill.position = map_to_world(tile)
+							get_parent().get_node("Buildings").add_child(sawmill)
+							is_enable_build = false
+							$Sprite.visible = false
+						else:
+							print("Not enough money")

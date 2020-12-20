@@ -54,8 +54,8 @@ var _prev_mouse_pos = null
 
 # INPUTS
 
-# Left mouse button was or is pressed.
-var __lmbk = false
+# Right mouse button was or is pressed.
+var __rmbk = false
 # Move camera by keys: left, top, right, bottom.
 var __keys = [false, false, false, false]
 
@@ -92,7 +92,7 @@ func _physics_process(delta):
 			camera_movement.y -= camera_speed * delta
 	
 	# When LMB is pressed, move camera by difference of mouse position
-	if drag and __lmbk:
+	if drag and __rmbk:
 		camera_movement = _prev_mouse_pos - get_local_mouse_position()
 	
 	# Update position of the camera.
@@ -105,10 +105,10 @@ func _physics_process(delta):
 func _unhandled_input( event ):
 	if event is InputEventMouseButton:
 		if drag and\
-		   event.button_index == BUTTON_LEFT:
-			# Control by left mouse button.
-			if event.pressed: __lmbk = true
-			else: __lmbk = false
+		   event.button_index == BUTTON_RIGHT:
+			# Control by right mouse button.
+			if event.pressed: __rmbk = true
+			else: __rmbk = false
 		# Check if mouse wheel was used. Not handled by ImputMap!
 		if wheel:
 			# Checking if future zoom won't be under 0.

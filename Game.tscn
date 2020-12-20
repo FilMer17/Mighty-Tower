@@ -9,7 +9,6 @@
 script = ExtResource( 3 )
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( 131074, 5, 0, 131075, 5, 0, 196610, 5, 0, 196611, 5, 0 )
 
 [node name="Sprite" parent="Map/Builder" index="0"]
 texture = ExtResource( 4 )
@@ -17,5 +16,27 @@ texture = ExtResource( 4 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Money" type="Label" parent="CanvasLayer"]
+margin_left = 6.7424
+margin_top = 8.24069
+margin_right = 120.742
+margin_bottom = 22.2407
+text = "Money: <MONEY>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wood" type="Label" parent="CanvasLayer"]
+margin_left = 8.24069
+margin_top = 24.7221
+margin_right = 114.241
+margin_bottom = 38.7221
+text = "Wood: <WOOD>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="Map"]
